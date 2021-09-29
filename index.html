@@ -1,0 +1,124 @@
+<html>
+<head>
+	<script language=javascript>
+	
+	function getSelectedValue(selectList){
+		return selectList[selectList.selectedIndex].value
+	}
+
+	function employ(frm)
+	{
+		var grad = getSelectedValue(frm.grad)
+		var dept = getSelectedValue(frm.dept)
+
+		var basic = 0
+		var allow = 0
+		var gross = 0
+		var deduct = 0
+		var net = 0
+
+		if(dept=="1")
+		{
+			if(grad=="1"){
+				basic="4000";}
+			else if(grad=="2"){
+				basic="3000";}
+			else if(grad=="3"){
+				basic="2000";}
+		}
+
+		else if(dept=="2")
+		{
+			if(grad=="1"){
+				basic="6000";}
+			else if(grad=="2"){
+				basic="5000";}
+			else if(grad=="3"){
+				basic="4000";}
+		}
+
+		else if(dept=="3")
+		{
+			if(grad=="1"){
+				basic="8000";}
+			else if(grad=="2"){
+				basic="7000";}
+			else if(grad=="3"){
+				basic="6000";}
+		}
+
+		allow = eval(basic)*20/100;
+		gross = eval(basic)+eval(allow);
+		deduct = eval(gross)*5/100;
+		net = eval(gross)-eval(deduct);
+
+		frm.basic.value=basic;
+		frm.allow.value=allow;
+		frm.gross.value=gross;
+		frm.deduct.value=deduct;
+		frm.net.value=net;
+	}
+	
+	</script>
+</head>
+<body>
+<hr color=black>
+<hr color=black>
+<center>
+<form method="post" action="">
+<table cellpadding=3>
+<tr>
+	<td colspan=2 align=right>Name Of Employe :</td>
+	<td><input type=text size=30 maxlength=20</td>
+</tr>
+<tr>
+	<td colspan=2 align=right>Department :</td>
+	<td>
+		<select name=dept>
+		<option value="1">Marketing</option>
+		<option value="2">Purchasing</option>
+		<option value="3">Sales Division</option>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 align=right>Emp.Grade :</td>
+	<td>
+		<select name=grad>
+		<option value="1">Grade A</option>
+		<option value="2">Grade B</option>
+		<option value="3">Grade C</option>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td colspan=4 align=center>
+	<input type=button value=Submit onClick="employ(this.form)">
+	<input type=reset value=Reset>
+<hr size=1>
+	</td>
+</tr>
+<tr>
+	<td>Basic Salary:</td>
+	<td><input type=text name=basic></td>
+
+	<td>Gross:</td>
+	<td ><input type=text name=gross></td>
+</tr>
+<tr>
+	<td>Allownces 20%:</td>
+	<td ><input type=text name=allow></td>
+
+	<td>Deduction 5%:</td>
+	<td><input type=text name=deduct></td>
+</tr>
+<hr size=1>
+<tr>
+	<td colspan=2 align=center>Net Salary:</td>
+	<td colspan=2 align=center><input type=text name=net></td>
+</tr>
+</table>
+</center>
+<hr color=black>
+</body>
+</html>
